@@ -1,0 +1,28 @@
+{
+  "name": "to-fix-validate",
+  "version": "0.0.1",
+  "description": "Validation functions for to-fix features",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapbox/to-fix-validate.git"
+  },
+  "author": "Mapbox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mapbox/to-fix-validate/issues"
+  },
+  "homepage": "https://github.com/mapbox/to-fix-validate#readme",
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "tape": "^4.8.0"
+  },
+  "dependencies": {
+    "geojsonhint": "^2.0.0",
+    "lodash": "^4.17.4",
+    "validator": "^9.1.1"
+  }
+}
