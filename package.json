@@ -1,5 +1,5 @@
 {
-  "name": "to-fix-validate",
+  "name": "@mapbox/to-fix-validate",
   "version": "0.0.1",
   "description": "Validation functions for to-fix features",
   "main": "index.js",
