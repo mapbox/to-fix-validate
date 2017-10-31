@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mapbox/to-fix-validate.svg?branch=master)](https://travis-ci.org/mapbox/to-fix-validate)
+
 # to-fix-validate
 
 Exposes a function to validate FeatureCollections sent to the to-fix backend, enforcing the `properties` schema.
