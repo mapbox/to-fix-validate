@@ -22,10 +22,14 @@ const validFC = {
       'date:timestamp': '2015-01-17T18:23',
       'image:dog': 'data:image/gif;base64,R0lGODlhyAAiALMDfD0QAADs=',
       'audio:cat': 'https://example.com/audio.mp3',
-      'link:tofix': 'https://example.com/example_link'
+      'link:tofix': 'https://example.com/example_link',
+      'tofix:group': 'foo',
+      'tofix:group-position': 0
     }),
     makeFeature({
-      'tofix:category': 'Another Nice Category'
+      'tofix:category': 'Another Nice Category',
+      'tofix:group': 'foo',
+      'tofix:group-position': 1
     })
   ]
 };
@@ -114,6 +118,26 @@ const invalidPrefixFC = {
   ]
 };
 
+const invalidGroupPositionFC = {
+  type: 'FeatureCollection',
+  features: [
+    makeFeature({
+      'tofix:category': 'Some Cat',
+      'tofix:group': 'X',
+      'tofix:group-position': 0
+    }),
+    makeFeature({
+      'tofix:category': 'Some Cat',
+      'tofix:group': 'X',
+      'tofix:group-position': 1
+    }),
+    makeFeature({
+      'tofix:category': 'Some Cat',
+      'tofix:group': 'X'
+    })
+  ]
+};
+
 const manyErrorsFC = {
   type: 'FeatureCollection',
   features: badTofixFC.features
@@ -196,5 +220,12 @@ tape('test that feature with an invalid prefix returns an error', assert => {
 tape('test that multiple erroneous features return multiple errors', assert => {
   const errors = validateFC(manyErrorsFC);
   assert.equal(errors.length, 7, '7 errors returned');
+  assert.end();
+});
+
+tape('test that a group with some items having group-position and some not errors', assert => {
+  const errors = validateFC(invalidGroupPositionFC);
+  assert.equal(errors.length, 1);
+  assert.equal(errors[0], 'Member of group X does not have group-position property set');
   assert.end();
 });
